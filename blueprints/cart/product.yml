@@ -1,0 +1,24 @@
+type: group
+fields:
+
+  productName:
+    label: Name
+    type: text
+    required: true
+  productID:
+    label: Product ID
+    type: text
+    required: true
+  productPrice:
+    label: Price
+    type: number
+    step: .01
+    required: true
+  productDescription:
+    label: Description
+    type: text
+    required: true
+  productImage:
+    label: Image
+    type: files
+    required: true
