@@ -62,7 +62,7 @@ sections:
 Add the "Add to Cart" button to your product template:
 
 ```
-<?= snippet('products/add') ?>
+<?= snippet('product/add') ?>
 ```
 
 ## Options

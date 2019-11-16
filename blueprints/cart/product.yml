@@ -21,4 +21,5 @@ fields:
   productImage:
     label: Image
     type: files
+    max: 1
     required: true

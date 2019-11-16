@@ -1,4 +1,4 @@
-<button class="snipcart-add-item"
+<button class="snipcart-add-item <?= $class ?>"
   data-item-id="<?= $page->ProductID() ?>"
   data-item-price="<?= $page->ProductPrice() ?>"
   data-item-url="<?= $page->url() ?>"

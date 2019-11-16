@@ -40,7 +40,8 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
       'cart/init'         => __DIR__ . '/snippets/snipcart/cart/cart-init.php',
 
       // Products
-      'products/add'      => __DIR__ . '/snippets/snipcart/products/product-add-to-cart.php',
+      'product/add'        => __DIR__ . '/snippets/snipcart/products/product-add-to-cart.php',
+      'product/list'       => __DIR__ . '/snippets/snipcart/products/product-list.php',
 
     ],
 
