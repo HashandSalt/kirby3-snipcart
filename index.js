@@ -8830,6 +8830,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {};
 exports.default = _default;
         var $d27f5a = exports.default || module.exports;
@@ -8847,7 +8848,11 @@ exports.default = _default;
   return _c(
     "k-view",
     { staticClass: "k-snipcart-view" },
-    [_c("k-header", [_vm._v("Dashboard")])],
+    [
+      _c("k-header", [_vm._v("Dashboard")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("This is a work in progress!")])
+    ],
     1
   )
 }
@@ -8924,7 +8929,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50718" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50186" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
