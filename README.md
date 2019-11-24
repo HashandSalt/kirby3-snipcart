@@ -67,11 +67,19 @@ Add the "Add to Cart" button to your product template:
 
 ## Options
 
-The cart will not work without a valid API key which can be obtained from within the Snipcart Dashboard
+The cart will not work without a valid API for the cart on the front end, and you also need a secret key for the Kirby Panel to work with. These can be obtained from within the Snipcart Dashboard.
 
 You can also choose wether or not to use the default css theme for the cart:
 
 ```
-'hashandsalt.kirby-snipcart.apikey' => 'XXXX',
+'hashandsalt.kirby-snipcart.snipcartlive' => false,
+
+'hashandsalt.kirby-snipcart.apikeytest'   => 'XXXX',
+'hashandsalt.kirby-snipcart.apikeylive'   => 'XXXX',
+
+'apisecrettest' => 'XXXX',
+'apisecretlive' => 'XXXX',
+
 'hashandsalt.kirby-snipcart.defaulttheme' => true,
+
 ```
