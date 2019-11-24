@@ -77,8 +77,8 @@ You can also choose wether or not to use the default css theme for the cart:
 'hashandsalt.kirby-snipcart.apikeytest'   => 'XXXX',
 'hashandsalt.kirby-snipcart.apikeylive'   => 'XXXX',
 
-'apisecrettest' => 'XXXX',
-'apisecretlive' => 'XXXX',
+'hashandsalt.kirby-snipcart.apisecrettest' => 'XXXX',
+'hashandsalt.kirby-snipcart.apisecretlive' => 'XXXX',
 
 'hashandsalt.kirby-snipcart.defaulttheme' => true,
 
