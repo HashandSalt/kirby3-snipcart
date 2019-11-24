@@ -18,8 +18,18 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
     // Options
     'options' => [
 
-      // Tag Options
-      'apikey' => option('hashandsalt.kirby-snipcart.apikey'), // Snipcart API Key
+      // MODE (live|test)
+      'snipcartlive' => false,
+
+      // API KEYS
+      'apikeytest' => option('hashandsalt.kirby-snipcart.apikeytest'), // Snipcart Test API Key (Front end)
+      'apikeylive' => option('hashandsalt.kirby-snipcart.apikeylive'), // Snipcart Live API Key (Front end)
+
+      // SECRET KEYS
+      'apisecrettest' => option('hashandsalt.kirby-snipcart.apisecretkeytest'), // Snipcart Test API Key (For Panel Dashboard)
+      'apisecretlive' => option('hashandsalt.kirby-snipcart.apisecretkeylive'), // Snipcart Test API Key (For Panel Dashboard)
+
+      // USE CART THEME
       'defaulttheme' => option('hashandsalt.kirby-snipcart.defaulttheme'), // Use Snipcart Default CSS
 
     ],
@@ -44,6 +54,34 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
       'product/list'       => __DIR__ . '/snippets/snipcart/products/product-list.php',
 
     ],
+
+    // API Route
+    'api' => [
+      'routes' => [
+          [
+              'pattern' => 'snipcart',
+              'action'  => function () {
+
+                $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretkeylive') : option('hashandsalt.kirby-snipcart.apisecretkeytest');
+
+                $snipcart = [];
+
+                $request = Remote::get('https://app.snipcart.com/api/orders', [
+                  'headers' => [
+                      'Accept:' . 'application/json',
+                      'Authorization: Basic ' . base64_encode($apisecretkey . ':')
+                  ]
+                ]);
+
+                if ($request->code() === 200) {
+                    $snipcart = $request->json();
+                }
+
+                return $snipcart;
+              }
+          ]
+      ]
+    ]
 
 
 ]);
