@@ -16850,7 +16850,7 @@ var _default = {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return regeneratorRuntime.awrap(this.$api.get('snipcart/abandoned', {
+            return regeneratorRuntime.awrap(this.$api.get('snipcart/carts/abandoned', {
               pretty: true
             }));
 
@@ -17378,7 +17378,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49485" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50126" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

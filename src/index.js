@@ -9,4 +9,6 @@ panel.plugin("hashandsalt/kirby-snipcart", {
       label: "Snipcart"
     }
   }
+
+
 });
