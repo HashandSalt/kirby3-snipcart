@@ -60,7 +60,7 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
       'routes' => [
 
           [
-              'pattern' => 'snipcart/(:any)',
+              'pattern' => 'snipcart/(:all)',
               'action'  => function ($param) {
 
                 $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretlive') : option('hashandsalt.kirby-snipcart.apisecrettest');

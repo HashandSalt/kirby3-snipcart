@@ -21,7 +21,7 @@ export default {
   // Abandoned Carts
   async created() {
     try {
-      let response = await this.$api.get('snipcart/abandoned', {pretty: true})
+      let response = await this.$api.get('snipcart/carts/abandoned', {pretty: true})
       this.abandoned = response.items;
     } catch (e) {
        this.errors.push(e)
