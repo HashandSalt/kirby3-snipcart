@@ -1,4 +1,5 @@
-import View from "./components/View.vue";
+import 'babel-polyfill';
+import View from "./components/dashboard/View.vue";
 
 panel.plugin("hashandsalt/kirby-snipcart", {
   views: {
