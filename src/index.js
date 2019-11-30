@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import 'regenerator-runtime/runtime';
 import View from "./components/dashboard/View.vue";
 
 panel.plugin("hashandsalt/kirby-snipcart", {
@@ -9,6 +9,4 @@ panel.plugin("hashandsalt/kirby-snipcart", {
       label: "Snipcart"
     }
   }
-
-
 });

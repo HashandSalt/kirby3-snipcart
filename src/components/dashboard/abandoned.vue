@@ -6,26 +6,20 @@
 </template>
 <script>
 export default {
-  name: 'abandoned',
   data() {
     return {
-      abandoned: undefined,
-      errors: [],
+      abandoned: null
     }
   },
   computed: {
      abandonedCount () {
-       return (this.abandoned) ? this.abandoned.length : 'Loading...'
+       return this.abandoned ? this.abandoned.length : 'Loading...'
      }
   },
   // Abandoned Carts
   async created() {
-    try {
-      let response = await this.$api.get('snipcart/carts/abandoned', {pretty: true})
-      this.abandoned = response.items;
-    } catch (e) {
-       this.errors.push(e)
-    }
+    let response = await this.$api.get('snipcart/carts/abandoned');
+    this.abandoned = response.items;
   }
 }
 </script>
