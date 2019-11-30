@@ -29,7 +29,7 @@ export default {
           label: "No.",
           field: "invoiceNumber",
           sort: true,
-          search: false
+          search: true
         },
         {
           name: "date",
@@ -45,11 +45,6 @@ export default {
           search: false
         },
         {
-          name: "payment",
-          label: "Paid with",
-          field: "paymentMethod"
-        },
-        {
           name: "total",
           label: "Total",
           field: "finalGrandTotal",
@@ -61,11 +56,6 @@ export default {
           name: "address",
           label: "Ship to",
           field: "shippingAddressCountry"
-        },
-        {
-          name: "user",
-          label: "User",
-          field: "cardHolderName"
         }
       ]
     },
