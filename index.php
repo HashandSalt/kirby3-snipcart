@@ -58,15 +58,14 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
     // API Route
     'api' => [
       'routes' => [
+
           [
-              'pattern' => 'snipcart',
-              'action'  => function () {
+              'pattern' => 'snipcart/(:any)',
+              'action'  => function ($param) {
 
-                $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretkeylive') : option('hashandsalt.kirby-snipcart.apisecretkeytest');
-
+                $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretlive') : option('hashandsalt.kirby-snipcart.apisecrettest');
                 $snipcart = [];
-
-                $request = Remote::get('https://app.snipcart.com/api/orders', [
+                $request = Remote::get('https://app.snipcart.com/api/'. $param, [
                   'headers' => [
                       'Accept:' . 'application/json',
                       'Authorization: Basic ' . base64_encode($apisecretkey . ':')
@@ -80,8 +79,9 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
                 return $snipcart;
               }
           ]
+
+        ]
       ]
-    ]
 
 
 ]);
