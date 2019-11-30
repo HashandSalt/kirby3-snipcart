@@ -6,31 +6,23 @@
 </template>
 <script>
 export default {
-  name: 'totalSales',
   data() {
     return {
-      totalSales: undefined,
-      errors: [],
+      totalSales: null
     }
   },
   computed: {
      salesCount () {
-       return (this.totalSales) ? this.totalSales : 'Loading...'
+       return this.totalSales ? this.totalSales : 'Loading...'
      }
   },
   // Abandoned Carts
   async created() {
-    try {
-      let response = await this.$api.get('snipcart/orders', {pretty: true})
+    let response = await this.$api.get('snipcart/orders');
 
-        let salesTotal = response.items.reduce((acc, item) => acc + item.finalGrandTotal, 0);
-        let currencySymbol = '£';
-        this.totalSales = currencySymbol + salesTotal;
-
-
-    } catch (e) {
-       this.errors.push(e)
-    }
+    let salesTotal = response.items.reduce((acc, item) => acc + item.finalGrandTotal, 0);
+    let currencySymbol = '£';
+    this.totalSales = currencySymbol + salesTotal;
   }
 }
 </script>

@@ -5,15 +5,19 @@
   <k-grid gutter="medium" class="k-snipcart-vitals">
 
     <k-column width="1/3">
-      <totalsales></totalsales>
+      <sales-total />
     </k-column>
 
     <k-column width="1/3">
-      <popular></popular>
+      <popular />
     </k-column>
 
     <k-column width="1/3">
-      <abandonedcarts></abandonedcarts>
+      <abandoned />
+    </k-column>
+
+    <k-column width="1/1">
+      <orders />
     </k-column>
 
   </k-grid>
@@ -24,13 +28,15 @@
 <script>
 import Abandoned from './abandoned.vue';
 import SalesTotal from './sales.vue';
-import popularItem from './popular.vue';
+import Popular from './popular.vue';
+import Orders from './orders.vue';
 
 export default {
   components: {
-    'abandonedcarts': Abandoned,
-    'totalsales': SalesTotal,
-    'popular': popularItem
+    'abandoned': Abandoned,
+    'sales-total': SalesTotal,
+    'popular': Popular,
+    'orders': Orders
   }
 }
 </script>
