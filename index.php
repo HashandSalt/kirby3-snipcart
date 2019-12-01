@@ -15,6 +15,7 @@
 
 Kirby::plugin('hashandsalt/kirby-snipcart', [
 
+
     // Options
     'options' => [
 
@@ -32,6 +33,17 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
       // USE CART THEME
       'defaulttheme' => option('hashandsalt.kirby-snipcart.defaulttheme'), // Use Snipcart Default CSS
 
+    ],
+
+    // Fields
+    'fields' => [
+      'productTotal' => [
+        'props' => [
+          'help' => function ($help = null) {
+              return I18n::translate($help, $help);
+          }
+        ]
+      ],
     ],
 
     // Snippets

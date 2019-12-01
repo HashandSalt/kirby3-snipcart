@@ -16,13 +16,11 @@ export default {
        return this.totalSales ? this.totalSales : 'Loading...'
      }
   },
-  // Abandoned Carts
+  // Sales totals
   async created() {
     let response = await this.$api.get('snipcart/orders');
-
     let salesTotal = response.items.reduce((acc, item) => acc + item.finalGrandTotal, 0).toFixed(2);
-    let currencySymbol = '£';
-    this.totalSales = currencySymbol + salesTotal;
+    this.totalSales = salesTotal;
   }
 }
 </script>

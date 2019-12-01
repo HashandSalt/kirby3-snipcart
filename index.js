@@ -845,7 +845,80 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"../node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/tbl-for-kirby/index.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
 var Vue // late bind
 var version
 var map = Object.create(null)
@@ -9663,9 +9736,9 @@ var _default = {
       return this.totalSales ? this.totalSales : 'Loading...';
     }
   },
-  // Abandoned Carts
+  // Sales totals
   created: function created() {
-    var response, salesTotal, currencySymbol;
+    var response, salesTotal;
     return regeneratorRuntime.async(function created$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -9678,10 +9751,9 @@ var _default = {
             salesTotal = response.items.reduce(function (acc, item) {
               return acc + item.finalGrandTotal;
             }, 0).toFixed(2);
-            currencySymbol = '£';
-            this.totalSales = currencySymbol + salesTotal;
+            this.totalSales = salesTotal;
 
-          case 6:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -9861,74 +9933,7 @@ render._withStripped = true
 var define;
 !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t=t||self).Tbl=e()}(this,function(){"use strict";function t(e){return(t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(e)}return function(t,e,n,s,o,i,r,a,c,l){"boolean"!=typeof r&&(c=a,a=r,r=!1);var d,u="function"==typeof n?n.options:n;if(t&&t.render&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns,u._compiled=!0,o&&(u.functional=!0)),s&&(u._scopeId=s),i?(d=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),e&&e.call(this,c(t)),t&&t._registeredComponents&&t._registeredComponents.add(i)},u._ssrRegister=d):e&&(d=r?function(){e.call(this,l(this.$root.$options.shadowRoot))}:function(t){e.call(this,a(t))}),d)if(u.functional){var f=u.render;u.render=function(t,e){return d.call(e),f(t,e)}}else{var h=u.beforeCreate;u.beforeCreate=h?[].concat(h,d):[d]}return n}({render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("section",{staticClass:"tbl",attrs:{"data-version":"1.0.9"}},[n("header",{staticClass:"k-section-header"},[t._t("headline",[n("k-headline",[t._v(t._s(t.headline))])]),t._v(" "),t._t("filter",[n("k-button-group",[t.showReset?n("button",{staticClass:"tbl-reset",on:{click:t.reset}},[t._v("\n          "+t._s(t.config.labels.reset)+"\n        ")]):t._e(),t._v(" "),t.showSearch?n("input",{directives:[{name:"model",rawName:"v-model",value:t.searchTerm,expression:"searchTerm"}],ref:"search",staticClass:"tbl-search",attrs:{type:"text",placeholder:t.config.labels.filter},domProps:{value:t.searchTerm},on:{keydown:function(e){return!e.type.indexOf("key")&&t._k(e.keyCode,"esc",27,e.key,["Esc","Escape"])?null:t.reset(e)},input:function(e){e.target.composing||(t.searchTerm=e.target.value)}}}):t._e(),t._v(" "),t.showAdd?n("k-button",{attrs:{icon:"add"},on:{click:function(e){return t.$emit("add")}}},[t._v("\n          "+t._s(t.$t("add"))+"\n        ")]):t._e()],1)])],2),t._v(" "),t._t("table",[n("table",[n("thead",[0===t.rowsFiltered.length?n("th",{attrs:{colspan:t.widthLoading}}):[t._l(t.columns,function(e){return n("th",{key:e.field,class:"head-"+(e.class||"field-"+e.field),attrs:{"data-align":t.getAlign(e),"data-width":e.width,"data-responsive":!1!==e.responsive,"data-sortable":t.config.sort.enabled&&!1!==e.sort,"data-sorted":t.sortBy===e&&(1===t.sortOrder?"asc":"desc")},on:{click:function(n){return t.setSort(e)}}},[t._v("\n            "+t._s(e.label)+"\n          ")])}),t._v(" "),t.showActions?n("th",{attrs:{"data-width":t.widthActions}}):t._e()]],2),t._v(" "),n("tbody",[0===t.rowsFiltered.length?n("tr",[n("td",{attrs:{colspan:t.widthLoading,"data-align":"center"}},[t._t("empty-row",[n("p",[this.isLoading?n("k-icon",{attrs:{type:"loader"}}):n("span",[t._v(t._s(t.config.labels.empty))])],1)])],2)]):t._l(t.rowsPaginated,function(e,s){return n("tr",{key:"row_"+s},[t._l(t.columns,function(o){return n("td",{key:o.field,class:"row-"+(o.class||"field-"+o.field),attrs:{"data-width":o.width,"data-align":t.getAlign(o),"data-responsive":!1!==o.responsive},on:{click:function(n){return t.$emit("action",[t.config.actions.onRow,e,o.field])}}},[t._t("column-"+(o.name||o.field),[t._t("column-$default",["url"===o.type?n("k-url-field-preview",{attrs:{value:e[o.field]}}):n("p",{domProps:{innerHTML:t._s(t.getValue(e[o.field],o.type))}})],{index:s,column:o,field:o.field,row:e,value:t.getValue(e[o.field],o.type)})],{index:s,column:o,field:o.field,row:e,value:t.getValue(e[o.field],o.type)})],2)}),t._v(" "),t.showActions?n("td",{staticClass:"tbl-options",attrs:{"data-width":t.widthActions,"data-align":"center"}},[t._t("column-$actions",[t.config.actions.inline?t._l(t.config.actions.items,function(s){return n("k-button",{key:s.click,attrs:{tooltip:s.text,icon:s.icon},on:{click:function(n){return n.stopPropagation(),t.$emit("action",[s.click,e])}}})}):[n("k-button",{attrs:{tooltip:t.$t("options"),icon:"dots"},on:{click:function(e){e.stopPropagation(),t.$refs["options-"+s][0].toggle()}}}),t._v(" "),n("k-dropdown-content",{ref:"options-"+s,refInFor:!0,attrs:{options:t.config.actions.items,align:"right"},on:{action:function(n){return t.$emit("action",[n,e])}}})]],{row:e,index:s})],2):t._e()],2)})],2)])]),t._v(" "),n("footer",{staticClass:"tbl-footer"},[t._t("footer",[t.rowsFiltered.length>0?[n("div",{staticClass:"tbl-perPage"},[t._t("footer-before-perPage"),t._v(" "),n("select",{directives:[{name:"model",rawName:"v-model",value:t.perPage,expression:"perPage"}],attrs:{autocomplete:"off"},on:{input:t.onPerPage,change:function(e){var n=Array.prototype.filter.call(e.target.options,function(t){return t.selected}).map(function(t){return"_value"in t?t._value:t.value});t.perPage=e.target.multiple?n:n[0]}}},[t._l(t.config.pagination.perPageOptions,function(e){return n("option",{key:e,domProps:{value:e,textContent:t._s(e)}})}),t._v(" "),n("option",{domProps:{value:this.rowsFiltered.length}},[t._v("\n              "+t._s(t.config.labels.all)+"\n            ")])],2),t._v(" "),n("span",[t._v(t._s(t.config.labels.perPage))]),t._v(" "),t._t("footer-after-perPage")],2),t._v(" "),t._t("footer-center"),t._v(" "),n("div",{staticClass:"tbl-navigation"},[t._t("footer-before-pagination"),t._v(" "),t.rowsFiltered.length>t.perPage?[n("div",{staticClass:"btn btn-prev",attrs:{"data-disabled":t.page<=1},on:{click:function(e){return t.navigate(-1)}}},[n("span",{staticClass:"chevron"}),t._v(" "),n("span",[t._v(t._s(t.$t("prev")))])]),t._v(" "),n("div",{staticClass:"info"},[t._v("\n              "+t._s(this.pageRowFirst)+" - "+t._s(Math.min(this.pageRowLast,this.rowsFiltered.length))+" of "+t._s(this.rowsFiltered.length)+"\n            ")]),t._v(" "),n("div",{staticClass:"btn btn-next",attrs:{"data-disabled":t.page*t.perPage>=t.rowsFiltered.length},on:{click:function(e){return t.navigate(1)}}},[n("span",[t._v(t._s(t.$t("next")))]),t._v(" "),n("span",{staticClass:"chevron"})])]:t._e(),t._v(" "),t._t("footer-after-pagination")],2)]:t._e()])],2),t._v(" "),t._t("dialogs")],2)},staticRenderFns:[]},void 0,{props:{headline:String,columns:Array,rows:Array,options:Object,actions:Object,labels:Object,pagination:{type:[Boolean,Object],default:function(){return{}}},search:{type:[Boolean,Object],default:function(){return{}}},sort:{type:[Boolean,Object],default:function(){return{}}},store:{type:[Boolean,Object],default:function(){return{}}},isLoading:{type:Boolean,default:!1}},data:function(){return{searchTerm:"",sortBy:null,sortOrder:1,page:1,perPage:10}},computed:{config:function(){return Object.assign({actions:Object.assign({inline:!1,items:[],onRow:!1},this.actions),labels:Object.assign({all:"All",empty:"No rows available",perPage:"rows displayed",reset:"Reset",filter:"Filter items..."},this.labels),pagination:Object.assign({enabled:!0,page:1,perPage:10,perPageOptions:[5,10,25,50,100]},this.resolveOptions(this.pagination)),search:Object.assign({enabled:!0},this.resolveOptions(this.search)),sort:Object.assign({enabled:!0,initialBy:null},this.resolveOptions(this.sort)),store:Object.assign({enabled:!1,name:""},this.resolveOptions(this.store)),add:!1,reset:!0},this.options)},pageOffset:function(){return(this.page-1)*this.perPage},pageRowFirst:function(){return this.pageOffset+1},pageRowLast:function(){return this.pageOffset+this.perPage},rowsFiltered:function(){var t=this;if(""===this.searchTerm)return this.rows;var e=this.searchTerm.toLowerCase();return this.rows.slice().filter(function(n){var s=!1;return Object.keys(n).forEach(function(o){var i=t.columns.find(function(t){return t.field===o});i&&!1!==i.search&&String(n[o]).toLowerCase().includes(e)&&(s=!0)}),s})},rowsPaginated:function(){return this.rowsSorted.slice(this.pageOffset,this.pageOffset+this.perPage)},rowsSorted:function(){var t=this;return this.sortBy&&!1!==this.config.sort.enabled?this.rowsFiltered.slice().sort(function(e,n){if(t.sortBy.field&&(e=e[t.sortBy.field],n=n[t.sortBy.field]),t.sortBy.sort&&t.sortBy.sort.field&&(e=e[t.sortBy.sort.field],n=n[t.sortBy.sort.field]),t.sortBy.sort&&t.sortBy.sort.value&&(e=e[t.sortBy.sort.value],n=n[t.sortBy.sort.value]),t.sortBy.callback)return t.sortBy.callback(e,n,t.sortOrder,t.sortBy);switch(t.sortBy.type){case"number":return(e-n)*t.sortOrder;case"date":return(new Date(e)-new Date(n))*t.sortOrder;default:return e=(""+e).toLowerCase(),n=(""+n).toLowerCase(),e.localeCompare(n)*t.sortOrder}}):this.rowsFiltered},showActions:function(){return!!this.$scopedSlots["column-$actions"]||!!this.config.actions.items&&this.config.actions.items.length>0},showAdd:function(){return this.config.add},showReset:function(){return this.config.reset&&(""!==this.searchTerm||null!==this.sortBy)},showSearch:function(){return this.columns.filter(function(t){return!1!==t.search}).length>0&&this.config.search.enabled},storeName:function(){return"kirby$plugin$tbl$"+this.config.store.name},widthActions:function(){return this.config.actions.width?this.config.actions.width:(this.config.actions.inline?this.config.actions.items.length:1)+"fr"},widthLoading:function(){return Math.max(this.columns.length,1)+(this.showActions?1:0)}},watch:{config:function(){this.load()},searchTerm:function(t){this.setStore(),this.page=1,this.$emit("onFilter",t)}},created:function(){this.load()},methods:{getAlign:function(t){if(t.align)return t.align;switch(t.type){case"number":case"decimal":case"percentage":case"boolean":case"date":return"right";default:return"left"}},getValue:function(t,e){switch(e){case"date":return t?new Date(t).toLocaleString(this.$user.language.replace("_","-"),{year:"numeric",month:"long",day:"numeric"}):"–";case"number":return t?1*t:"–";case"decimals":return t?Number(t).toFixed(2):"–";case"percentage":return t?Number(100*t).toFixed(2)+" %":"– %";default:return t||null}},load:function(){this.page=this.config.pagination.page,this.perPage=this.config.pagination.perPage,this.loadStore(),this.loadSort()},loadSort:function(){if(!0===this.config.sort.enabled&&null===this.sortBy){var t=this.config.sort.initialBy;if(t){var e=this.columns.find(function(e){return e.name===t});e||(e=this.columns.find(function(e){return e.field===t})),this.setSort(e)}}},loadStore:function(){if(!0===this.config.store.enabled){var t=JSON.parse(sessionStorage.getItem(this.storeName));null!==t&&(this.page=t.page,this.perPage=t.perPage,this.searchTerm=t.searchTerm,this.sortBy=t.sortBy,this.sortOrder=t.sortOrder),this.$emit("onLoadStore",t)}},navigate:function(t){this.page+=t,this.setStore(),this.$emit("onPage",this.page)},onPerPage:function(){this.page=1,this.setStore(),this.$emit("onPerPage",this.perPage)},reset:function(){Object.assign(this.$data,this.$options.data.apply(this)),this.$refs.search.blur(),this.setStore(),this.$emit("onReset")},resolveOptions:function(e){return 0===Object.keys(e).length?e:t(e)==t(!0)?{enabled:e}:Object.assign({enabled:!0},e)},setSort:function(t){!1!==this.config.sort.enabled&&!1!==t.sort&&(this.sortBy===t?this.sortOrder*=-1:(this.sortBy=t,this.sortOrder="desc"===(t.sort&&t.sort.order?t.sort.order:t.sort)?-1:1),this.setStore(),this.$emit("onSort",Object.assign({},t,{currentDirection:this.sortOrder})))},setStore:function(){var t=this;!0===this.config.store.enabled&&this.$nextTick(function(){var e={page:t.page,perPage:t.perPage,searchTerm:t.searchTerm,sortBy:t.sortBy,sortOrder:t.sortOrder};sessionStorage.setItem(t.storeName,JSON.stringify(e)),t.$emit("onLoadStore",e)})}}},void 0,!1,void 0,void 0,void 0)});
 
-},{}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/dashboard/orders.vue":[function(require,module,exports) {
+},{}],"components/dashboard/orders.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10211,24 +10216,140 @@ render._withStripped = true
       
       }
     })();
-},{"./abandoned.vue":"components/dashboard/abandoned.vue","./sales.vue":"components/dashboard/sales.vue","./popular.vue":"components/dashboard/popular.vue","./orders.vue":"components/dashboard/orders.vue","_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"../node_modules/tbl-for-kirby/index.css":[function(require,module,exports) {
+},{"./abandoned.vue":"components/dashboard/abandoned.vue","./sales.vue":"components/dashboard/sales.vue","./popular.vue":"components/dashboard/popular.vue","./orders.vue":"components/dashboard/orders.vue","_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/products/productTotal.vue":[function(require,module,exports) {
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  props: _defineProperty({
+    label: String,
+    value: String,
+    disabled: Boolean,
+    required: Boolean
+  }, "value", String),
+  data: function data() {
+    return {
+      totalSales: null,
+      productID: this.$store.getters["content/values"]()["productid"]
+    };
+  },
+  computed: {
+    salesCount: function salesCount() {
+      return this.totalSales ? this.totalSales : 'Loading...';
+    }
+  },
+  created: function created() {
+    var response;
+    return regeneratorRuntime.async(function created$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return regeneratorRuntime.awrap(this.$api.get('snipcart/products/' + this.productID));
+
+          case 2:
+            response = _context.sent;
+
+            if (response === undefined || response.length == 0) {
+              this.totalSales = 0;
+            } else {
+              this.totalSales = response['statistics']['totalSales'].toFixed(2);
+            }
+
+          case 4:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, this);
+  }
+};
+exports.default = _default;
+        var $e92780 = exports.default || module.exports;
+      
+      if (typeof $e92780 === 'function') {
+        $e92780 = $e92780.options;
+      }
+    
+        /* template */
+        Object.assign($e92780, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "k-snipcart-product-total" }, [
+    _c("div", { staticClass: "k-snipcart-vital" }, [
+      _c("h3", [_vm._v("Total Sales")]),
+      _vm._v(" "),
+      _c("span", [_vm._v(_vm._s(_vm.salesCount))])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e92780', $e92780);
+          } else {
+            api.reload('$e92780', $e92780);
+          }
+        }
+
+        
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+      }
+    })();
+},{"_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
 
+require("tbl-for-kirby/index.css");
+
 var _View = _interopRequireDefault(require("./components/dashboard/View.vue"));
 
-require("tbl-for-kirby/index.css");
+var _productTotal = _interopRequireDefault(require("./components/products/productTotal.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 panel.plugin("hashandsalt/kirby-snipcart", {
+  fields: {
+    productTotal: _productTotal.default
+  },
   views: {
     snipcartproducts: {
       component: _View.default,
@@ -10237,7 +10358,7 @@ panel.plugin("hashandsalt/kirby-snipcart", {
     }
   }
 });
-},{"regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","./components/dashboard/View.vue":"components/dashboard/View.vue","tbl-for-kirby/index.css":"../node_modules/tbl-for-kirby/index.css"}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","tbl-for-kirby/index.css":"../node_modules/tbl-for-kirby/index.css","./components/dashboard/View.vue":"components/dashboard/View.vue","./components/products/productTotal.vue":"components/products/productTotal.vue"}],"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -10265,7 +10386,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49449" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49854" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
