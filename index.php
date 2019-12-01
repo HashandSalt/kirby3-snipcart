@@ -4,7 +4,7 @@
  *
  * Snipcart Plugin for Kirby 3
  *
- * @version   0.0.3
+ * @version   0.0.4
  * @author    James Steel <https://hashandsalt.com>
  * @copyright James Steel <https://hashandsalt.com>
  * @link      https://github.com/HashandSalt/webp
@@ -14,6 +14,7 @@
 @include_once __DIR__ . '/vendor/autoload.php';
 
 Kirby::plugin('hashandsalt/kirby-snipcart', [
+
 
     // Options
     'options' => [
@@ -32,6 +33,17 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
       // USE CART THEME
       'defaulttheme' => option('hashandsalt.kirby-snipcart.defaulttheme'), // Use Snipcart Default CSS
 
+    ],
+
+    // Fields
+    'fields' => [
+      'productTotal' => [
+        'props' => [
+          'help' => function ($help = null) {
+              return I18n::translate($help, $help);
+          }
+        ]
+      ],
     ],
 
     // Snippets
