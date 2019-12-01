@@ -65,6 +65,14 @@ Add the "Add to Cart" button to your product template:
 <?= snippet('product/add') ?>
 ```
 
+### Add Checkout Summary
+
+Add the "Checkout" button and items in basket to your product template:
+
+```
+<?= snippet('cart/checkoutsummary') ?>
+```
+
 ## Options
 
 The cart will not work without a valid API for the cart on the front end, and you also need a secret key for the Kirby Panel to work with. These can be obtained from within the Snipcart Dashboard.
