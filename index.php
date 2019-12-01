@@ -46,12 +46,13 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
     // Snippets
     'snippets' => [
 
-      // Init
-      'cart/init'         => __DIR__ . '/snippets/snipcart/cart/cart-init.php',
+      // Cart
+      'cart/init'                    => __DIR__ . '/snippets/snipcart/cart/cart-init.php',
+      'cart/checkoutsummary'         => __DIR__ . '/snippets/snipcart/cart/cart-checkout-summary.php',
 
       // Products
-      'product/add'        => __DIR__ . '/snippets/snipcart/products/product-add-to-cart.php',
-      'product/list'       => __DIR__ . '/snippets/snipcart/products/product-list.php',
+      'product/add'                  => __DIR__ . '/snippets/snipcart/products/product-add-to-cart.php',
+      'product/list'                 => __DIR__ . '/snippets/snipcart/products/product-list.php',
 
     ],
 
