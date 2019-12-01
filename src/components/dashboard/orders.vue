@@ -26,23 +26,29 @@ export default {
       return [
         {
           name: "id",
-          label: "No.",
+          label: "#",
           field: "invoiceNumber",
           sort: true,
-          search: true
+          search: true,
+          align: "left",
+          width: "id"
         },
         {
           name: "date",
-          label: "Created",
+          label: "Order Date",
           field: "creationDate",
-          type: "date"
+          type: "date",
+          align: "left",
+          width: "date"
         },
         {
           name: "status",
           label: "Status",
           field: "status",
           sort: false,
-          search: false
+          search: false,
+          align: "center",
+          width: "status"
         },
         {
           name: "total",
@@ -50,12 +56,15 @@ export default {
           field: "finalGrandTotal",
           type: "decimal",
           sort: true,
-          search: false
+          search: false,
+          width: "total"
         },
         {
           name: "address",
           label: "Ship to",
-          field: "shippingAddressCountry"
+          field: "shippingAddressCountry",
+          align: "right",
+          width: "ship"
         }
       ]
     },
@@ -70,3 +79,26 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.tbl[data-version="1.0.9"] td, .tbl[data-version="1.0.9"] th[data-width="ship"]
+{
+  width: 100px;
+}
+.tbl[data-version="1.0.9"] td, .tbl[data-version="1.0.9"] th[data-width="total"]
+{
+  width: 100px;
+}
+.tbl[data-version="1.0.9"] td, .tbl[data-version="1.0.9"] th[data-width="status"]
+{
+  width: 100px;
+}
+.tbl[data-version="1.0.9"] td, .tbl[data-version="1.0.9"] th[data-width="date"]
+{
+  // width: 100px;
+}
+.tbl[data-version="1.0.9"] td, .tbl[data-version="1.0.9"] th[data-width="id"]
+{
+  width: 100px;
+}
+</style>
