@@ -1,4 +1,5 @@
 <template>
+
 <k-view class="k-snipcart-view">
 
   <TabCard :tabs="tabs" :initialTab="initialTab">
@@ -18,18 +19,10 @@
       </template>
 
       <template slot="tab-panel-discounts">
-        <k-header>Discounts</k-header>
+        <discounts></discounts>
       </template>
 
-      <!-- SubScriptions -->
-      <template slot="tab-head-subscriptions">
-        Sub-scriptions
-      </template>
-      <template slot="tab-panel-subscriptions">
-        <k-header>Sub-scriptions</k-header>
-      </template>
-
-    </TabCard>
+  </TabCard>
 
 </k-view>
 </template>
@@ -38,18 +31,19 @@
 
 import TabCard from '../tools/tabs.vue';
 import Vitals from '../dashboard/vitals.vue';
-
+import Discounts from '../discounts/discounts.vue';
 
 export default {
   name: 'Dashboard',
   components: {
     'vitals': Vitals,
+    'discounts': Discounts,
     'TabCard' : TabCard
   },
   data() {
     return {
       initialTab: 'dashboard',
-      tabs: ['dashboard', 'discounts', 'subscriptions']
+      tabs: ['dashboard', 'discounts']
     };
   }
 }

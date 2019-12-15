@@ -10339,7 +10339,250 @@ render._withStripped = true
         
       }
     })();
-},{"./components/abandoned.vue":"components/dashboard/components/abandoned.vue","./components/sales.vue":"components/dashboard/components/sales.vue","./components/popular.vue":"components/dashboard/components/popular.vue","./components/orders.vue":"components/dashboard/components/orders.vue","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/panel/view.vue":[function(require,module,exports) {
+},{"./components/abandoned.vue":"components/dashboard/components/abandoned.vue","./components/sales.vue":"components/dashboard/components/sales.vue","./components/popular.vue":"components/dashboard/components/popular.vue","./components/orders.vue":"components/dashboard/components/orders.vue","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/discounts/components/discountlist.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _tblForKirby = _interopRequireDefault(require("tbl-for-kirby"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  components: {
+    Tbl: _tblForKirby.default
+  },
+  data: function data() {
+    return {
+      discounts: []
+    };
+  },
+  computed: {
+    columns: function columns() {
+      return [{
+        name: "discname",
+        label: "Discount Name",
+        field: "name",
+        sort: true,
+        search: true,
+        align: "left",
+        width: "name"
+      }, {
+        name: "code",
+        label: "Code",
+        field: "code",
+        sort: true,
+        search: true,
+        align: "left",
+        width: "code"
+      }, {
+        name: "expires",
+        label: "Expires",
+        field: "expires",
+        sort: true,
+        search: true,
+        align: "left",
+        width: "expires"
+      }, {
+        name: "uses",
+        label: "# Uses",
+        field: "numberOfUsages",
+        sort: true,
+        search: true,
+        align: "left",
+        width: "uses"
+      }];
+    },
+    config: function config() {
+      return {};
+    }
+  },
+  created: function created() {
+    var response;
+    return regeneratorRuntime.async(function created$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return regeneratorRuntime.awrap(this.$api.get('snipcart/discounts'));
+
+          case 2:
+            response = _context.sent;
+            this.discounts = response;
+            console.log(response);
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, this);
+  }
+};
+exports.default = _default;
+        var $ca83cf = exports.default || module.exports;
+      
+      if (typeof $ca83cf === 'function') {
+        $ca83cf = $ca83cf.options;
+      }
+    
+        /* template */
+        Object.assign($ca83cf, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "tbl",
+    _vm._b(
+      {
+        attrs: {
+          headline: "Active Discount Codes",
+          columns: _vm.columns,
+          rows: _vm.discounts,
+          "is-loading": this.$store.state.isLoading
+        }
+      },
+      "tbl",
+      _vm.config,
+      false
+    )
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ca83cf', $ca83cf);
+          } else {
+            api.reload('$ca83cf', $ca83cf);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"tbl-for-kirby":"../node_modules/tbl-for-kirby/index.js","_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/discounts/discounts.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _discountlist = _interopRequireDefault(require("./components/discountlist.vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'Discounts',
+  components: {
+    'discounts': _discountlist.default
+  }
+};
+exports.default = _default;
+        var $c9e377 = exports.default || module.exports;
+      
+      if (typeof $c9e377 === 'function') {
+        $c9e377 = $c9e377.options;
+      }
+    
+        /* template */
+        Object.assign($c9e377, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("k-header", [_vm._v("Discounts")]),
+      _vm._v(" "),
+      _c(
+        "k-grid",
+        { staticClass: "k-snipcart-vitals", attrs: { gutter: "medium" } },
+        [_c("k-column", { attrs: { width: "1/1" } }, [_c("discounts")], 1)],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$c9e377', $c9e377);
+          } else {
+            api.reload('$c9e377', $c9e377);
+          }
+        }
+
+        
+      }
+    })();
+},{"./components/discountlist.vue":"components/discounts/components/discountlist.vue","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/panel/view.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10351,15 +10594,10 @@ var _tabs = _interopRequireDefault(require("../tools/tabs.vue"));
 
 var _vitals = _interopRequireDefault(require("../dashboard/vitals.vue"));
 
+var _discounts = _interopRequireDefault(require("../discounts/discounts.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -10393,12 +10631,13 @@ var _default = {
   name: 'Dashboard',
   components: {
     'vitals': _vitals.default,
+    'discounts': _discounts.default,
     'TabCard': _tabs.default
   },
   data: function data() {
     return {
       initialTab: 'dashboard',
-      tabs: ['dashboard', 'discounts', 'subscriptions']
+      tabs: ['dashboard', 'discounts']
     };
   }
 };
@@ -10433,23 +10672,7 @@ exports.default = _default;
             _vm._v("\n        Discounts\n      ")
           ]),
           _vm._v(" "),
-          _c(
-            "template",
-            { slot: "tab-panel-discounts" },
-            [_c("k-header", [_vm._v("Discounts")])],
-            1
-          ),
-          _vm._v(" "),
-          _c("template", { slot: "tab-head-subscriptions" }, [
-            _vm._v("\n        Sub-scriptions\n      ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "template",
-            { slot: "tab-panel-subscriptions" },
-            [_c("k-header", [_vm._v("Sub-scriptions")])],
-            1
-          )
+          _c("template", { slot: "tab-panel-discounts" }, [_c("discounts")], 1)
         ],
         2
       )
@@ -10490,7 +10713,7 @@ render._withStripped = true
       
       }
     })();
-},{"../tools/tabs.vue":"components/tools/tabs.vue","../dashboard/vitals.vue":"components/dashboard/vitals.vue","_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/products/producttotal.vue":[function(require,module,exports) {
+},{"../tools/tabs.vue":"components/tools/tabs.vue","../dashboard/vitals.vue":"components/dashboard/vitals.vue","../discounts/discounts.vue":"components/discounts/discounts.vue","_css_loader":"../../../../../../Users/hashandsalt/.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/products/producttotal.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
