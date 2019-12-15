@@ -1,8 +1,9 @@
 import 'regenerator-runtime/runtime';
 import 'tbl-for-kirby/index.css';
-import View from "./components/dashboard/View.vue";
-import ProductTotal from "./components/products/productTotal.vue";
 
+import View from "./components/panel/view.vue";
+
+import ProductTotal from "./components/products/producttotal.vue";
 
 panel.plugin("hashandsalt/kirby-snipcart", {
 
