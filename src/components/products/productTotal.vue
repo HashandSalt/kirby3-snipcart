@@ -16,12 +16,12 @@ export default {
     required: Boolean,
     value: String
   },
-  data() {
-    return {
-      totalSales: null,
-      productID: this.$store.getters["content/values"]()["productid"]
-    }
-  },
+data() {
+  return {
+    totalSales: null,
+    productID: this.$store.getters["content/values"]()["productid"]
+  }
+},
   computed: {
      salesCount () {
        return this.totalSales ? this.totalSales : 'Loading...'
@@ -39,7 +39,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-/** put your css here **/
-</style>
