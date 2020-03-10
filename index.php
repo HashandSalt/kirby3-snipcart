@@ -75,7 +75,6 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
           [
               'pattern' => 'snipcart/(:all)',
               'action'  => function ($param) {
-
                 $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretlive') : option('hashandsalt.kirby-snipcart.apisecrettest');
                 $snipcart = [];
                 $request = Remote::get('https://app.snipcart.com/api/'. $param, [
@@ -84,15 +83,12 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
                       'Authorization: Basic ' . base64_encode($apisecretkey . ':')
                   ]
                 ]);
-
                 if ($request->code() === 200) {
                     $snipcart = $request->json();
                 }
-
                 return $snipcart;
               }
           ]
-
         ]
       ]
 
