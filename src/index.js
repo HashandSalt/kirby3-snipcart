@@ -1,22 +1,7 @@
-import 'regenerator-runtime/runtime';
-import 'tbl-for-kirby/index.css';
+import DemoSection from "./components/DemoSection.vue";
 
-import View from "./components/panel/view.vue";
-
-import ProductTotal from "./components/products/producttotal.vue";
-
-panel.plugin("hashandsalt/kirby-snipcart", {
-
-  fields: {
-    productTotal: ProductTotal,
-  },
-
-  views: {
-    snipcartproducts: {
-      component: View,
-      icon: "cart",
-      label: "Snipcart"
-    }
-  },
-
+window.panel.plugin("getkirby/pluginkit", {
+  sections: {
+    demo: DemoSection
+  }
 });

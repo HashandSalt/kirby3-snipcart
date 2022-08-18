@@ -1,18 +1,15 @@
 {
-    "name": "hashandsalt/kirby3-snipcart",
-    "description": "Kirby 3 Snipcart plugin",
+    "name": "getkirby/pluginkit",
+    "description": "Kirby Example Plugin",
     "type": "kirby-plugin",
     "license": "MIT",
     "authors": [
         {
-            "name": "James Steel",
-            "email": "hello@hashandsalt.com"
+            "name": "Your Name",
+            "email": "you@example.com"
         }
     ],
     "require": {
         "getkirby/composer-installer": "^1.1"
-    },
-    "config": {
-        "optimize-autoloader": true
     }
 }

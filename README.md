@@ -1,93 +1,106 @@
-# Kirby Snipcart
+# Kirby Pluginkit: Example plugin for Kirby
 
-This plugin helps integrate Snipcart into a Kirby site. We have big plans for this one, but right now it just helps add the default cart and provides blueprints & snippets to take the mandatory data that Snipcart needs in order to work.
+> Variant "Panel plugin setup"
 
-This is designed to work with version 3 of Snipcart. It is worth noting that this version is built on Vue, and adding the cart to the template also adds Vue. Therefore, if you need other interactivity (lightboxes, image sliders etc) on the site, it's not a good idea to use jQuery. Go with Vue based plugins.
+This is a boilerplate for a Kirby Panel plugin that can be installed via all three [supported installation methods](https://getkirby.com/docs/guide/plugins/plugin-setup-basic#the-three-plugin-installation-methods).
 
-Planned future features:
+You can find a list of Pluginkit variants on the [`master` branch](https://github.com/getkirby/pluginkit/tree/master).
 
-* Vue template overrides allowing greater customisation of the cart.
-* Panel widgets showing high level info like number of sales, revenue etc.
-* Full integration with the relevant parts Snipcart API.
-* Reports - export stuff like the sales for the year to CSV.
-* Anything else useful!
+****
 
-## Install
+## How to use the Pluginkit
+
+1. Fork this repository
+2. Change the plugin name and description in the `composer.json`
+3. Change the plugin name in the `index.php` and `src/index.js`
+4. Change the license if you don't want to publish under MIT
+5. Add your plugin code to the `index.php` and `src/index.js`
+6. Update this `README` with instructions for your plugin
+
+### Install the development and build setup
+
+We use [kirbyup](https://github.com/johannschopplich/kirbyup) for the development and build setup.
+
+You can start developing directly. kirbyup will be fetched remotely with your first `npm run` command, which may take a short amount of time.
+
+### Development
+
+You can start the dev process with:
+
+```
+npm run dev
+```
+
+This will automatically update the `index.js` and `index.css` of your plugin as soon as you make changes.
+Reload the Panel to see your code changes reflected.
+
+### Production
+
+As soon as you are happy with your plugin, you should build the final version with:
+
+```
+npm run build
+```
+
+This will automatically create a minified and optimized version of your `index.js` and `index.css`
+which you can ship with your plugin.
+
+We have a tutorial on how to build your own plugin based on the Pluginkit [in the Kirby documentation](https://getkirby.com/docs/guide/plugins/plugin-setup-basic).
+
+### Build reproducibility
+
+While kirbyup will stay backwards compatible, exact build reproducibility may be of importance to you. If so, we recommend to target a specific package version, rather than using npx:
+
+```json
+{
+  "scripts": {
+    "dev": "kirbyup src/index.js --watch",
+    "build": "kirbyup src/index.js"
+  },
+  "devDependencies": {
+    "kirbyup": "^0.14.1"
+  }
+}
+```
+
+What follows is an example README for your plugin.
+
+****
+
+## Installation
 
 ### Download
 
-Download and copy this repository to `/site/plugins/kirby3-snipcart`.
+Download and copy this repository to `/site/plugins/{{ plugin-name }}`.
+
+### Git submodule
+
+```
+git submodule add https://github.com/{{ your-name }}/{{ plugin-name }}.git site/plugins/{{ plugin-name }}
+```
 
 ### Composer
 
 ```
-composer require hashandsalt/kirby3-snipcart
+composer require {{ your-name }}/{{ plugin-name }}
 ```
 
-****
+## Setup
 
-## Commerical Usage
-
-This plugin is free but if you use it in a commercial project please consider to
-- [make a donation 🍻](https://paypal.me/hashandsalt?locale.x=en_GB) or
-- [buy a Kirby license using this affiliate link](https://a.paddle.com/v2/click/1129/36141?link=1170)
-
-****
-
-
-## Usage
-
-### Cart Snippet
-
-Add the cart just before your closing body tag:
-
-```
-<?= snippet('cart/init') ?>
-```
-
-### Blueprint
-
-Extend the product data blueprint into you product page blueprint:
-
-```
-sections:
-  productdata:
-    type: fields
-  fields:
-    productinfo: cart/product
-```
-
-### Add to Cart Button
-
-Add the "Add to Cart" button to your product template:
-
-```
-<?= snippet('product/add') ?>
-```
-
-### Add Checkout Summary
-
-Add the "Checkout" button and items in basket to your product template:
-
-```
-<?= snippet('cart/checkoutsummary') ?>
-```
+*Additional instructions on how to configure the plugin (e.g. blueprint setup, config options, etc.)*
 
 ## Options
 
-The cart will not work without a valid API for the cart on the front end, and you also need a secret key for the Kirby Panel to work with. These can be obtained from within the Snipcart Dashboard.
+*Document the options and APIs that this plugin offers*
 
-You can also choose wether or not to use the default css theme for the cart:
+## Development
 
-```
-'hashandsalt.kirby-snipcart.snipcartlive' => false,
+*Add instructions on how to help working on the plugin (e.g. npm setup, Composer dev dependencies, etc.)*
 
-'hashandsalt.kirby-snipcart.apikeytest'   => 'XXXX',
-'hashandsalt.kirby-snipcart.apikeylive'   => 'XXXX',
+## License
 
-'hashandsalt.kirby-snipcart.apisecrettest' => 'XXXX',
-'hashandsalt.kirby-snipcart.apisecretlive' => 'XXXX',
+MIT
 
-'hashandsalt.kirby-snipcart.defaulttheme' => true,
+## Credits
 
-```
+- [Your Name](https://github.com/ghost)
