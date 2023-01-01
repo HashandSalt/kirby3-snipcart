@@ -1,7 +1,16 @@
-import DemoSection from "./components/DemoSection.vue";
+import Vitals from "./components/dashboard/Vitals.vue";
+import ProductTotal from "./components/products/ProductTotal.vue";
 
-window.panel.plugin("getkirby/pluginkit", {
-  sections: {
-    demo: DemoSection
-  }
+panel.plugin("hashandsalt/snipcart", {
+
+
+  components: {
+    vitals: Vitals
+  },
+
+
+  fields: {
+    productTotal: ProductTotal,
+	}
+  
 });
