@@ -1,8 +1,13 @@
 {
     "name": "hashandsalt/kirby3-snipcart",
-    "description": "Kirby 3 Snipcart plugin",
+    "description": "Snipcart Panel Plugin",
     "type": "kirby-plugin",
     "license": "MIT",
+    "version": "0.5.0",
+    "support": {
+        "issues": "https://github.com/HashandSalt/kirby3-snipcart/issues",
+        "source": "https://github.com/HashandSalt/kirby3-snipcart"
+    },
     "authors": [
         {
             "name": "James Steel",
@@ -11,8 +16,5 @@
     ],
     "require": {
         "getkirby/composer-installer": "^1.1"
-    },
-    "config": {
-        "optimize-autoloader": true
     }
 }

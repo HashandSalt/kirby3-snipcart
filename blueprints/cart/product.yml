@@ -1,7 +1,7 @@
 type: group
 fields:
   productTotal:
-    type: productTotal
+    type: producttotal
   productName:
     label: Name
     type: text

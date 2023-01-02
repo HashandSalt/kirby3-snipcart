@@ -1,80 +1,48 @@
 <template>
-  <tbl
-    headline="Active Discount Codes"
-    :columns="columns"
-    :rows="discounts"
-    :is-loading="this.$store.state.isLoading"
-    v-bind="config"
-  />
+  <div>
+    <k-table v-if="discounts.length" :columns="tablecolumns" :rows="discounts" />
+  </div>
 </template>
 
-<script>
-
-import Tbl from "tbl-for-kirby";
-
+<script lang="js">
 export default {
-  components: {
-    Tbl
+  props: {
+    name: String,
+    columns: Object,
+    options: Array,
+    rows: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    empty: String,
   },
+
   data() {
     return {
-      discounts: []
-    }
+      tablecolumns: { discname: { label: "Name", type: "text" }, code: { label: "Code", type: "text" }, expires: {label: "Expires", type: "text" },  uses: {label: "Uses", type: "text" } },
+      discounts: [],
+    };
   },
-  computed: {
-    columns() {
-      return [
-        {
-          name: "discname",
-          label: "Discount Name",
-          field: "name",
-          sort: true,
-          search: true,
-          align: "left",
-          width: "name"
-        },
-        {
-          name: "code",
-          label: "Code",
-          field: "code",
-          sort: true,
-          search: true,
-          align: "left",
-          width: "code"
-        },
-        {
-          name: "expires",
-          label: "Expires",
-          field: "expires",
-          sort: true,
-          search: true,
-          align: "left",
-          width: "expires"
-        },
-        {
-          name: "uses",
-          label: "# Uses",
-          field: "numberOfUsages",
-          sort: true,
-          search: true,
-          align: "left",
-          width: "uses"
-        }
-      ]
-    },
-    config() {
-      return {
-      }
-    }
-  },
+
   async created() {
-    let response = await this.$api.get('snipcart/discounts');
-    this.discounts = response;
-    console.log(response)
-  }
-}
+    let response = await this.$api.get("snipcart/discounts");
+
+    let data = response.map(function (element) {
+
+      let date = new Date( Date.parse(element.expires));            
+      let datestring = ("0" + date.getDate()).slice(-2)+'/'+("0" + (date.getMonth() + 1)).slice(-2)+'/'+date.getFullYear();
+
+      return {discname: element.discname, code: element.code, uses: element.numberOfUsages, expires: datestring}
+    });
+
+ 
+    this.discounts = data;
+
+  },
+};
 </script>
 
 <style lang="scss">
-
 </style>

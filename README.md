@@ -12,6 +12,8 @@ Planned future features:
 * Reports - export stuff like the sales for the year to CSV.
 * Anything else useful!
 
+Built against Kirby 3.8.3+ and PHP 8.1+
+
 ## Install
 
 ### Download
@@ -88,6 +90,14 @@ You can also choose wether or not to use the default css theme for the cart:
 'hashandsalt.kirby-snipcart.apisecrettest' => 'XXXX',
 'hashandsalt.kirby-snipcart.apisecretlive' => 'XXXX',
 
-'hashandsalt.kirby-snipcart.defaulttheme' => true,
 
+
+```
+
+## Change Notes
+
+The following config option has been depricated as it is now a an option on the Snipcart JS call. You can set it in `<?= snippet('cart/init') ?>`
+
+```
+'hashandsalt.kirby-snipcart.defaulttheme' => true,
 ```

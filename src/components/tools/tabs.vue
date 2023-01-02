@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script>
+<script lang="js">
 export default {
 
   props: {
@@ -55,7 +55,8 @@ export default {
 .card {
   background-color: #fff;
   width: 100%;
-  margin-top: 48px;
+  // margin-top: 48px;
+  overflow: hidden;
 }
 
 .card-header {
@@ -65,6 +66,8 @@ export default {
   justify-content: space-between;
   color: #fff;
   padding: 15px 8px 0;
+  overflow: hidden;
+  clear: both;
 }
 
 .tab-heads {

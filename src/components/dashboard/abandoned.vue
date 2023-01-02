@@ -4,7 +4,7 @@
   <span>{{ abandonedCount }}</span>
 </div>
 </template>
-<script>
+<script lang="js">
 export default {
   data() {
     return {

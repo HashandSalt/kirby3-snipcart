@@ -1,6 +1,6 @@
 <template>
   <div>
-  <k-header>Discounts</k-header>
+
 
   <k-grid gutter="medium" class="k-snipcart-vitals">
     <k-column width="1/1">
@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="js">
 
 import Discounts from './components/discountlist.vue';
 
@@ -18,6 +18,9 @@ export default {
   name: 'Discounts',
   components: {
     'discounts': Discounts
-  }
+  },
+
+
+
 }
 </script>

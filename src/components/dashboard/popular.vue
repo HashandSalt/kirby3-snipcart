@@ -4,7 +4,7 @@
   <span>{{ popularCount }}</span>
 </div>
 </template>
-<script>
+<script lang="js">
 export default {
   name: 'popularItem',
   data() {
