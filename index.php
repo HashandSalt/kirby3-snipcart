@@ -91,7 +91,7 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
                   return [
                       // the Vue component can be defined in the
                       // `index.js` of your plugin
-                      'component' => 'vitals',
+                      'component' => 'dash',
     
                       // the document title for the current view
                       'title' => 'Snipcart',
@@ -114,7 +114,12 @@ Kirby::plugin('hashandsalt/kirby-snipcart', [
               'action'  => function ($param) {
                 $apisecretkey = option('hashandsalt.kirby-snipcart.snipcartlive') === true ? option('hashandsalt.kirby-snipcart.apisecretlive') : option('hashandsalt.kirby-snipcart.apisecrettest');
                 $snipcart = [];
-                $request = Remote::get('https://app.snipcart.com/api/'. $param, [
+
+                if ($limit = get('limit')) {
+                  $limit = '?limit='.get('limit');
+                }
+
+                $request = Remote::get('https://app.snipcart.com/api/'.$param.$limit, [
                   'headers' => [
                       'Accept:' . 'application/json',
                       'Authorization: Basic ' . base64_encode($apisecretkey . ':')
